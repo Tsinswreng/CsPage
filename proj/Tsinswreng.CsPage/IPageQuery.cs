@@ -1,6 +1,6 @@
 namespace Tsinswreng.CsPage;
 
-public interface IPageQuery
+public  partial interface IPageQuery
 	:IPageInfo
 	,I_WantTotalCount
 {

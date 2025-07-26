@@ -8,7 +8,7 @@ using Tsinswreng.CsCore;
 ///
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public class PageAsy<T>
+public  partial class PageAsy<T>
 	:I_TotalCount
 	,IPageQuery
 	,IPageAsy<T>

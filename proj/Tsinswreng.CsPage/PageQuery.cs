@@ -1,6 +1,6 @@
 namespace Tsinswreng.CsPage;
 
-public class PageQuery
+public  partial class PageQuery
 	:IPageQuery
 {
 	/// <summary>

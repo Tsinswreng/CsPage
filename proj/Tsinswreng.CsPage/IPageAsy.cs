@@ -4,7 +4,7 @@ namespace Tsinswreng.CsPage;
 /// 分頁ʹ果
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public interface IPageAsy<T>
+public  partial interface IPageAsy<T>
 	:I_TotalCount
 	,IPageInfo
 	,I_HasTotalCount
