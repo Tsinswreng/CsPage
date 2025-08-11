@@ -1,19 +1,19 @@
 namespace Tsinswreng.CsPage;
 
-public  partial class PageQuery
-	:IPageQuery
+public partial class PageQry
+	:IPageQry
 {
 	/// <summary>
 	/// from 0
 	/// </summary>
-	public u64 PageIndex{get;set;}
+	public u64 PageIdx{get;set;}
 	public u64 PageSize{get;set;}
-	public bool WantTotalCount{get;set;}
-	public static IPageQuery SelectAll(){
-		var R = new PageQuery();
-		R.PageIndex = 0;
+	public bool WantTotCnt{get;set;}
+	public static IPageQry SlctAll(){
+		var R = new PageQry();
+		R.PageIdx = 0;
 		R.PageSize = u64.MaxValue;
-		R.WantTotalCount = true;
+		R.WantTotCnt = true;
 		return R;
 	}
 }

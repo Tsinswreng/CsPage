@@ -5,9 +5,9 @@ namespace Tsinswreng.CsPage;
 /// </summary>
 /// <typeparam name="T"></typeparam>
 public  partial interface IPageAsy<T>
-	:I_TotalCount
+	:I_TotCnt
 	,IPageInfo
-	,I_HasTotalCount
+	,I_HasTotCnt
 {
 	public IAsyncEnumerable<T>? DataAsy{get;set;}
 

@@ -1,31 +1,45 @@
 namespace Tsinswreng.CsPage;
-
-using System.Runtime.CompilerServices;
 using Tsinswreng.CsCore;
 
 
-/// <summary>
-///
-/// </summary>
-/// <typeparam name="T"></typeparam>
-public  partial class PageAsy<T>
-	:I_TotalCount
-	,IPageQuery
-	,IPageAsy<T>
-{
+public partial class PageAsy{
 	public PageAsy(){}
 
-	public static IPageAsy<T> Mk(
-		IPageQuery Qry
+	public static IPageAsy<T> Mk<T>(
+		IPageQry Qry
 		,IAsyncEnumerable<T>? DataAsy
 		,bool HasTotalCount = false
 		,u64 TotalCount = 0
 	){
 		var R = new PageAsy<T>(){
-			TotalCount = TotalCount,
+			TotCnt = TotalCount,
 			PageQry = Qry,
 			DataAsy = DataAsy,
-			HasTotalCount = HasTotalCount,
+			HasTotCnt = HasTotalCount,
+		};
+		return R;
+	}
+}
+
+
+public partial class PageAsy<T>
+	:I_TotCnt
+	,IPageQry
+	,IPageAsy<T>
+{
+	public PageAsy(){}
+
+	public static IPageAsy<T> Mk(
+		IPageQry Qry
+		,IAsyncEnumerable<T>? DataAsy
+		,bool HasTotalCount = false
+		,u64 TotalCount = 0
+	){
+		var R = new PageAsy<T>(){
+			TotCnt = TotalCount,
+			PageQry = Qry,
+			DataAsy = DataAsy,
+			HasTotCnt = HasTotalCount,
 		};
 		return R;
 	}
@@ -33,43 +47,43 @@ public  partial class PageAsy<T>
 
 	[Obsolete("直接new + 屬性初始化塊")]
 	public static IPageAsy<T> Mk(
-		IPageQuery Qry
+		IPageQry Qry
 		,u64 TotalCount
 		,IAsyncEnumerable<T>? DataAsy
 		,bool HasTotalCount = false
 	){
 		var R = new PageAsy<T>(){
-			TotalCount = TotalCount,
+			TotCnt = TotalCount,
 			PageQry = Qry,
 			DataAsy = DataAsy,
-			HasTotalCount = HasTotalCount,
+			HasTotCnt = HasTotalCount,
 		};
 		return R;
 	}
 
-	public IPageQuery PageQry{
+	public IPageQry PageQry{
 		get{
-			return new PageQuery{
-				PageIndex = this.PageIndex
+			return new PageQry{
+				PageIdx = this.PageIdx
 				,PageSize = this.PageSize
-				,WantTotalCount = this.WantTotalCount
+				,WantTotCnt = this.WantTotCnt
 			};
 		}
 		set{
-			PageIndex = value.PageIndex;
+			PageIdx = value.PageIdx;
 			PageSize = value.PageSize;
-			WantTotalCount = value.WantTotalCount;
+			WantTotCnt = value.WantTotCnt;
 		}
 	}
 
 	[Impl]
-	public bool WantTotalCount{get;set;}
+	public bool WantTotCnt{get;set;}
 	[Impl]
-	public bool HasTotalCount{get;set;}
+	public bool HasTotCnt{get;set;}
 	[Impl]
-	public u64 TotalCount{get;set;}
+	public u64 TotCnt{get;set;}
 	[Impl]
-	public u64 PageIndex{get;set;}
+	public u64 PageIdx{get;set;}
 	[Impl]
 	public u64 PageSize{get;set;}
 	[Impl]
@@ -88,6 +102,6 @@ public static class ExtnPage{
 	public static u64 Offset_(
 		this IPageInfo z
 	){
-		return z.PageIndex * z.PageSize;
+		return z.PageIdx * z.PageSize;
 	}
 }
