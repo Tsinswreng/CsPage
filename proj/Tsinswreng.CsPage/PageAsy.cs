@@ -1,6 +1,7 @@
 namespace Tsinswreng.CsPage;
 using Tsinswreng.CsCore;
 
+[Obsolete("分頁旹應把每頁內容全載入內存洏非懶加載")]
 
 public partial class PageAsy{
 	public PageAsy(){}
@@ -21,7 +22,7 @@ public partial class PageAsy{
 	}
 }
 
-
+[Obsolete("分頁旹應把每頁內容全載入內存洏非懶加載")]
 public partial class PageAsy<T>
 	:I_TotCnt
 	,IPageQry
@@ -89,19 +90,4 @@ public partial class PageAsy<T>
 	[Impl]
 	public IAsyncEnumerable<T>? DataAsy{get;set;}
 
-}
-
-
-
-public static class ExtnPage{
-	/// <summary>
-	/// 因無擴展屬性、故于方法後加`_` 以期將來有擴展屬性語法旹不衝突
-	/// </summary>
-	/// <param name="z"></param>
-	/// <returns></returns>
-	public static u64 Offset_(
-		this IPageInfo z
-	){
-		return z.PageIdx * z.PageSize;
-	}
 }
