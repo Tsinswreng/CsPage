@@ -1,45 +1,45 @@
 namespace Tsinswreng.CsPage;
 using Tsinswreng.CsCore;
 
-[Obsolete("分頁旹應把每頁內容全載入內存洏非懶加載")]
+//[Obsolete("分頁旹應把每頁內容全載入內存洏非懶加載")]
 
-public partial class PageAsy{
-	public PageAsy(){}
+public partial class PageAsyE{
+	public PageAsyE(){}
 
-	public static IPageAsy<T> Mk<T>(
+	public static IPageAsyE<T> Mk<T>(
 		IPageQry Qry
 		,IAsyncEnumerable<T>? DataAsy
 		,bool HasTotalCount = false
 		,u64 TotalCount = 0
 	){
-		var R = new PageAsy<T>(){
+		var R = new PageAsyE<T>(){
 			TotCnt = TotalCount,
 			PageQry = Qry,
-			DataAsy = DataAsy,
+			DataAsyE = DataAsy,
 			HasTotCnt = HasTotalCount,
 		};
 		return R;
 	}
 }
 
-[Obsolete("分頁旹應把每頁內容全載入內存洏非懶加載")]
-public partial class PageAsy<T>
+//[Obsolete("分頁旹應把每頁內容全載入內存洏非懶加載")]
+public partial class PageAsyE<T>
 	:I_TotCnt
 	,IPageQry
-	,IPageAsy<T>
+	,IPageAsyE<T>
 {
-	public PageAsy(){}
+	public PageAsyE(){}
 
-	public static IPageAsy<T> Mk(
+	public static IPageAsyE<T> Mk(
 		IPageQry Qry
 		,IAsyncEnumerable<T>? DataAsy
 		,bool HasTotalCount = false
 		,u64 TotalCount = 0
 	){
-		var R = new PageAsy<T>(){
+		var R = new PageAsyE<T>(){
 			TotCnt = TotalCount,
 			PageQry = Qry,
-			DataAsy = DataAsy,
+			DataAsyE = DataAsy,
 			HasTotCnt = HasTotalCount,
 		};
 		return R;
@@ -47,16 +47,16 @@ public partial class PageAsy<T>
 
 
 	[Obsolete("直接new + 屬性初始化塊")]
-	public static IPageAsy<T> Mk(
+	public static IPageAsyE<T> Mk(
 		IPageQry Qry
 		,u64 TotalCount
 		,IAsyncEnumerable<T>? DataAsy
 		,bool HasTotalCount = false
 	){
-		var R = new PageAsy<T>(){
+		var R = new PageAsyE<T>(){
 			TotCnt = TotalCount,
 			PageQry = Qry,
-			DataAsy = DataAsy,
+			DataAsyE = DataAsy,
 			HasTotCnt = HasTotalCount,
 		};
 		return R;
@@ -88,6 +88,6 @@ public partial class PageAsy<T>
 	[Impl]
 	public u64 PageSize{get;set;}
 	[Impl]
-	public IAsyncEnumerable<T>? DataAsy{get;set;}
+	public IAsyncEnumerable<T>? DataAsyE{get;set;}
 
 }
