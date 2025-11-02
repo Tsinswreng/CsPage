@@ -8,14 +8,14 @@ public partial class PageAsyE{
 
 	public static IPageAsyE<T> Mk<T>(
 		IPageQry Qry
-		,IAsyncEnumerable<T>? DataAsy
+		,IAsyncEnumerable<T>? DataAsyE
 		,bool HasTotalCount = false
 		,u64 TotalCount = 0
 	){
 		var R = new PageAsyE<T>(){
 			TotCnt = TotalCount,
 			PageQry = Qry,
-			DataAsyE = DataAsy,
+			DataAsyE = DataAsyE,
 			HasTotCnt = HasTotalCount,
 		};
 		return R;
@@ -27,6 +27,7 @@ public partial class PageAsyE<T>
 	:I_TotCnt
 	,IPageQry
 	,IPageAsyE<T>
+	//,IPage<T>
 {
 	public PageAsyE(){}
 
@@ -90,4 +91,21 @@ public partial class PageAsyE<T>
 	[Impl]
 	public IAsyncEnumerable<T>? DataAsyE{get;set;}
 
+	#if false
+	protected IList<T>? _Data;
+	protected bool _InitedData = false;
+	[Impl(typeof(IPage<>))]
+	public IList<T>? Data{get{
+		if(!_InitedData){
+			_InitedData = true;
+			_Data = DataAsyE?.ToBlockingEnumerable().ToList();
+		}
+		return _Data;
+	}set{
+		throw new NotSupportedException("Cannot set Data of PageAsyE.");
+	}}
+	#endif
+
 }
+
+
