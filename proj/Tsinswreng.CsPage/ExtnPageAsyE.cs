@@ -21,4 +21,25 @@ public static class ExtnPageAsyE{
 		}
 		return R;
 	}
+	public static async Task<IPageAsyE<T>> ToPageAsyE<T>(
+		this IPage<T> z, CT Ct
+	){
+		var R = new PageAsyE<T>{
+			TotCnt = z.TotCnt,
+			PageIdx = z.PageIdx,
+			PageSize = z.PageSize,
+			HasTotCnt = z.HasTotCnt,
+		};
+		if(z.Data is null){
+			return R;
+		}
+
+		async IAsyncEnumerable<T> fn(IEnumerable<T> Data){
+			foreach(var ele in Data){
+				yield return ele;
+			}
+		}
+		R.DataAsyE = fn(z.Data);
+		return R;
+	}
 }
