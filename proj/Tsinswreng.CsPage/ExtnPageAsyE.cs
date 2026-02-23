@@ -2,7 +2,7 @@ namespace Tsinswreng.CsPage;
 
 
 public static class ExtnPageAsyE{
-	public static async Task<IPage<T>> ToSyncPage<T>(
+	public static async Task<IPage<T>> ToListPage<T>(
 		this IPageAsyE<T> z, CT Ct
 	){
 		var R = new Page<T>{

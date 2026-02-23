@@ -22,7 +22,7 @@ public partial class PageAsyE{
 	}
 }
 
-//[Obsolete("分頁旹應把每頁內容全載入內存洏非懶加載")]
+
 public partial class PageAsyE<T>
 	:I_TotCnt
 	,IPageQry
