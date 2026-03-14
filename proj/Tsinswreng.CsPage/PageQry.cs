@@ -3,9 +3,9 @@ namespace Tsinswreng.CsPage;
 public partial class PageQry
 	:IPageQry
 {
-	/// <summary>
+	
 	/// from 0
-	/// </summary>
+	
 	public u64 PageIdx{get;set;}
 	public u64 PageSize{get;set;}
 	public bool WantTotCnt{get;set;}
