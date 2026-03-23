@@ -1,3 +1,5 @@
+using Tsinswreng.CsCore;
+
 namespace Tsinswreng.CsPage;
 
 public partial class PageQry
@@ -17,5 +19,21 @@ public partial class PageQry
 		R.PageSize = i64.MaxValue;
 		R.WantTotCnt = true;
 		return R;
+	}
+}
+
+public static class ExtnPageQry{
+	extension(IPageQry z){
+		
+		[Doc(@$"To Page Result")]
+		public IPageAsyE<T> ToPageAsyE<T>(
+			IAsyncEnumerable<T> DataAsyE
+			,bool HasTotCnt = false
+			,u64 TotCnt = 0
+		){
+			return PageAsyE.Mk<T>(
+				z, DataAsyE, HasTotCnt, TotCnt
+			);
+		}
 	}
 }

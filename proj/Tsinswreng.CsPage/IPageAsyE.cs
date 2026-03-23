@@ -1,7 +1,9 @@
+using Tsinswreng.CsCore;
+
 namespace Tsinswreng.CsPage;
 
 
-/// 分頁ʹ果
+[Doc(@$"Page Result")]
 public partial interface IPageAsyE<T>
 	:I_TotCnt
 	,IPageInfo

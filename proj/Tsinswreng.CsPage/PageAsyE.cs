@@ -9,14 +9,14 @@ public partial class PageAsyE{
 	public static IPageAsyE<T> Mk<T>(
 		IPageQry Qry
 		,IAsyncEnumerable<T>? DataAsyE
-		,bool HasTotalCount = false
-		,u64 TotalCount = 0
+		,bool HasTotCnt = false
+		,u64 TotCnt = 0
 	){
 		var R = new PageAsyE<T>(){
-			TotCnt = TotalCount,
+			TotCnt = TotCnt,
 			PageQry = Qry,
 			DataAsyE = DataAsyE,
-			HasTotCnt = HasTotalCount,
+			HasTotCnt = HasTotCnt,
 		};
 		return R;
 	}
