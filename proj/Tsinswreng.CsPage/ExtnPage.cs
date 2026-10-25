@@ -1,5 +1,5 @@
 namespace Tsinswreng.CsPage;
-public static class ExtnPage{
+public static class PageExtn{
 	
 	/// 因無擴展屬性、故于方法後加`_` 以期將來有擴展屬性語法旹不衝突
 	

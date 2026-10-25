@@ -1,7 +1,7 @@
 namespace Tsinswreng.CsPage;
 
 
-public static class ExtnPageAsyE{
+public static class PageAsyEExtn{
 	public static async Task<IPage<T>> ToListPage<T>(
 		this IPageAsyE<T> z, CT Ct
 	){

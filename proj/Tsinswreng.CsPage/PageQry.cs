@@ -22,7 +22,7 @@ public partial class PageQry
 	}
 }
 
-public static class ExtnPageQry{
+public static class PageQryExtn{
 	extension(IPageQry z){
 		
 		[Doc(@$"To Page Result")]
